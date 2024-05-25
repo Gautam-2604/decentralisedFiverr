@@ -179,7 +179,8 @@ router.get("/presignedUrl", authMiddleware, async (req, res) => {
     const userId = req.userId;
 
     const { url, fields } = await createPresignedPost(s3Client, {
-        Bucket: 'hkirat-cms',
+        //Need some aws credentials not available 
+        Bucket: 'some-bucket',
         Key: `fiver/${userId}/${Math.random()}/image.jpg`,
         Conditions: [
           ['content-length-range', 0, 5 * 1024 * 1024] // 5 MB max
